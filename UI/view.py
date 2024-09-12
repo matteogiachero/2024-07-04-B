@@ -30,7 +30,7 @@ class View(ft.UserControl):
 
         # First row with some controls
         self.ddyear = ft.Dropdown(label="Anno",
-                                  hint_text="Anno da analizzare per gli avvistamenti.")
+                                  hint_text="Anno da analizzare per gli avvistamenti.", on_change=self._controller.fillDDState)
         self.ddstate = ft.Dropdown(label="Stato",
                                    hint_text="Stato da analizzare per gli avvistamenti.")
         self.btn_graph = ft.ElevatedButton(text="Crea Grafo",
@@ -43,6 +43,7 @@ class View(ft.UserControl):
         row1 = ft.Row([self.ddyear, self.ddstate, self.btn_graph, self.btn_path],
                       alignment=ft.MainAxisAlignment.SPACE_EVENLY)
         self._page.controls.append(row1)
+        self._controller.fillDD()
 
         # List View where the reply is printed
         self.txt_result1 = ft.ListView(width=400, expand=1, spacing=10, padding=20, auto_scroll=False)
